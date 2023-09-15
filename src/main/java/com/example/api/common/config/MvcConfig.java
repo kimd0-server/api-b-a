@@ -41,7 +41,11 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOriginPatterns(
-                        "http://localhost:8801"
+                        "http://localhost:8801",
+                        "http://www.limepiece.com:8801",
+                        "https://www.limepiece.com:8801",
+                        "http://limepiece.com",
+                        "https://limepiece.com"
                 )
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("authorization", "X-Auth-Token", "X-Requested-With", "Content-Type", "Original")
