@@ -30,6 +30,15 @@ public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                .mvcMatchers("/health/check")
+                .antMatchers("/index/**")
+                .antMatchers("/js/**")
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors()
@@ -42,7 +51,9 @@ public class SecurityConfig {
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new JwtExceptionFilter(), JwtAuthenticationFilter.class)
                 .authorizeHttpRequests()
-                .antMatchers("/exception/**", "/api/permit/**").permitAll()
+                .mvcMatchers("/api/auth/login", "/api/auth/refresh").permitAll()
+                .antMatchers("/api/auth/join/**", "/exception/**").permitAll()
+                .antMatchers("/oauth2/authorize/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()

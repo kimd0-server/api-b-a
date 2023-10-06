@@ -9,11 +9,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-
+    boolean existsByEmail(String email);
+    boolean existsByNick(String nick);
     Optional<UserEntity> findByEmail(String email);
-
-    @Query("select m from UserEntity m join fetch m.authRole a where m.email = :email")
-    Optional<UserEntity> findByEmailWithAuth(@Param("email")String email);
+    @Query("select m from UserEntity m join fetch m.role a where m.email = :email")
+    Optional<UserEntity> findByEmailWithRole(@Param("email")String email);
 
 
 }

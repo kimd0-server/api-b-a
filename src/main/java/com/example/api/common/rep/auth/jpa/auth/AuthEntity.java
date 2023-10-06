@@ -11,16 +11,16 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "CAUTH_AUTH_TB")
+@Table(name = "PUB_AUTH_TB")
 public class AuthEntity implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "auth_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "auth_role", nullable = false, length = 30)
-    private String authRole;
+    @Column(name = "role", nullable = false, length = 30)
+    private String role;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -28,20 +28,20 @@ public class AuthEntity implements GrantedAuthority {
 
     public static AuthEntity ofUser(UserEntity userEntity) {
         return AuthEntity.builder()
-                .authRole("ROLE_USER")
+                .role("ROLE_USER")
                 .userEntity(userEntity)
                 .build();
     }
 
     public static AuthEntity ofAdmin(UserEntity userEntity) {
         return AuthEntity.builder()
-                .authRole("ROLE_ADMIN")
+                .role("ROLE_ADMIN")
                 .userEntity(userEntity)
                 .build();
     }
 
     @Override
     public String getAuthority() {
-        return authRole;
+        return role;
     }
 }

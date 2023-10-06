@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/check")
 public class CheckAction {
     @GetMapping("")
-    public void check(UserEntity user) {
-        log.error("user {}", user);
+    public void check(UserEntity userEntity) {
+        log.error("user {}", userEntity);
     }
 }

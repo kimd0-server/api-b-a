@@ -1,8 +1,11 @@
 package com.example.api.common.rep.auth.jpa.user;
 
+import com.example.api.auth.api.dto.JoinParamDTO;
 import com.example.api.common.rep.auth.jpa.auth.AuthEntity;
-import com.example.api.common.rep.common.CommonDateEntity;
 import com.example.api.common.rep.auth.jpa.wallet.WalletEntity;
+import com.example.api.common.rep.common.CommonDateEntity;
+import com.example.api.common.utils.HttpUtils;
+import com.example.api.common.utils.RequestUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +15,9 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +29,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @DynamicInsert
 @Entity
-@Table(name = "CAUTH_USER_TB")
+@Table(name = "PUB_USER_TB")
 public class UserEntity extends CommonDateEntity {
 
     @Id
@@ -63,11 +69,64 @@ public class UserEntity extends CommonDateEntity {
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private Set<AuthEntity> authRole = new HashSet<>();
+    private Set<AuthEntity> role = new HashSet<>();
+
+    public void setWalletEntity(final WalletEntity walletEntity) {
+        this.walletEntity = walletEntity;
+    }
+
+    public static UserEntity ofUser(JoinParamDTO joinParamDTO) {
+        UserEntity userEntity = null;
+        HttpServletRequest request = HttpUtils.getRequest();
+        try {
+            userEntity = UserEntity.builder()
+                    .email(joinParamDTO.getUserEmail())
+                    .password(joinParamDTO.getUserPassword())
+                    .name(joinParamDTO.getUserName())
+                    .phone(joinParamDTO.getUserPhone())
+                    .nick(joinParamDTO.getUserNick())
+//                    .ip(Inet4Address.getLocalHost().getHostAddress())
+                    .ip(RequestUtils.getClientIP())
+//                    .block("N")
+                    .build();
+            userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
+            userEntity.addAuth(AuthEntity.ofUser(userEntity));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return userEntity;
+    }
+
+    public static UserEntity ofAdmin(JoinParamDTO joinParamDTO) {
+        UserEntity userEntity = null;
+        try {
+            userEntity = UserEntity.builder()
+                    .email(joinParamDTO.getUserEmail())
+                    .password(joinParamDTO.getUserPassword())
+                    .name(joinParamDTO.getUserName())
+                    .phone(joinParamDTO.getUserPhone())
+                    .nick(joinParamDTO.getUserNick())
+                    .ip(Inet4Address.getLocalHost().getHostAddress())
+//                    .block("N")
+                    .build();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
+        userEntity.addAuth(AuthEntity.ofAdmin(userEntity));
+        return userEntity;
+    }
+
+    private void addAuth(AuthEntity userAuthEntity) {
+        role.add(userAuthEntity);
+    }
 
     public List<String> getRoles() {
-        return authRole.stream()
-                .map(AuthEntity::getAuthRole)
+        return role.stream()
+                .map(AuthEntity::getRole)
                 .collect(Collectors.toList());
     }
 

@@ -23,6 +23,6 @@ public class UserDTO {
         this.userNick = userEntity.getNick();
         this.userIp = userEntity.getIp();
         this.userBlock = userEntity.getBlock();
-        this.userWalletEntityPoint = userEntity.getWalletEntity().getWalletPoint();
+        this.userWalletEntityPoint = userEntity.getWalletEntity().getPoint();
     }
 }

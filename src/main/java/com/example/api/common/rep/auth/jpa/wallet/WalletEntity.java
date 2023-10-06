@@ -15,16 +15,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CAUTH_WALLET_TB")
+@Table(name = "PUB_WALLET_TB")
 public class WalletEntity extends CommonDateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "wallet_id")
-    private Long walletId;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "wallet_point", nullable = false)
-    private Long walletPoint;
+    @Column(name = "point", nullable = false)
+    private Long point;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
