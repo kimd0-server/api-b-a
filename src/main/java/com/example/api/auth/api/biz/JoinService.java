@@ -5,27 +5,38 @@ import com.example.api.common.rep.auth.jpa.user.UserEntity;
 import com.example.api.common.rep.auth.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class JoinService {
 
-
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+
+    @Transactional
     public void joinUser(JoinParamDTO joinParamDTO) {
         joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
         userRepository.save(UserEntity.ofUser(joinParamDTO));
     }
 
+    @Transactional
     public void joinAdmin(JoinParamDTO joinParamDTO) {
         joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
         userRepository.save(UserEntity.ofAdmin(joinParamDTO));
+    }
+
+    @Transactional
+    public void joinSocial(JoinParamDTO joinParamDTO) {
+        joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
+        userRepository.save(UserEntity.ofSocial(joinParamDTO));
     }
 
     public Boolean valid(JoinParamDTO joinParamDTO, BindingResult bindingResult) {
@@ -81,10 +92,12 @@ public class JoinService {
         return isDuplicatedNickName(nick);
     }
 
+    @Transactional(readOnly = true)
     public boolean isDuplicatedEmail(String email) {
         return userRepository.existsByEmail(email);
     }
 
+    @Transactional(readOnly = true)
     public boolean isDuplicatedNickName(String nick) {
         return userRepository.existsByNick(nick);
     }

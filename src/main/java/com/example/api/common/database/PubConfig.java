@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -78,14 +79,14 @@ public class PubConfig {
         routingDataSource.afterPropertiesSet();
 
         HashMap<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "validate");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.put("hibernate.default_batch_fetch_size", 1000);
         properties.put("hibernate.show_sql", true);
         properties.put("hibernate.format_sql", true);
         properties.put("hibernate.use_sql_comments", true);
 
-        return builder.dataSource(routingDataSource)
+        return builder.dataSource(new LazyConnectionDataSourceProxy(routingDataSource))
                 .packages("com.example.api.common.rep.auth.jpa")
                 .properties(properties)
                 .persistenceUnit("pubEntityManager")

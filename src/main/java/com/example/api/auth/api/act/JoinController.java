@@ -30,6 +30,17 @@ public class JoinController {
         return ResponseDTO.of(true, Code.OK);
     }
 
+    @PostMapping("/social")
+    public ResponseDTO joinSocial(@Valid @RequestBody JoinParamDTO joinParamDTO, BindingResult bindingResult) {
+        if (joinService.valid(joinParamDTO, bindingResult)) {
+            return ResponseDTO.of(false, Code.VALIDATION_ERROR, bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        joinService.joinSocial(joinParamDTO);
+
+        return ResponseDTO.of(true, Code.OK);
+    }
+
     @PostMapping("/admin")
     public ResponseDTO joinAdmin(@Valid @RequestBody JoinParamDTO joinParamDTO, BindingResult bindingResult) {
         if (joinService.valid(joinParamDTO, bindingResult)) {

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EnableWebMvc
+@EnableRedisRepositories(basePackages = "com.example.api.common.rep.auth.redis")
 @Configuration
 @RequiredArgsConstructor
 @ComponentScan(basePackages = {"com.example.api"})

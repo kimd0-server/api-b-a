@@ -99,6 +99,30 @@ public class UserEntity extends CommonDateEntity {
         return userEntity;
     }
 
+    public static UserEntity ofSocial(JoinParamDTO joinParamDTO) {
+        UserEntity userEntity = null;
+        HttpServletRequest request = HttpUtils.getRequest();
+        try {
+            userEntity = UserEntity.builder()
+                    .email(joinParamDTO.getUserEmail())
+                    .password(joinParamDTO.getUserPassword())
+                    .name(joinParamDTO.getUserName())
+                    .phone(joinParamDTO.getUserPhone())
+                    .nick(joinParamDTO.getUserNick())
+//                    .ip(Inet4Address.getLocalHost().getHostAddress())
+                    .ip(RequestUtils.getClientIP())
+//                    .block("N")
+                    .build();
+            userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
+            userEntity.addAuth(AuthEntity.ofUser(userEntity));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return userEntity;
+    }
+
     public static UserEntity ofAdmin(JoinParamDTO joinParamDTO) {
         UserEntity userEntity = null;
         try {
