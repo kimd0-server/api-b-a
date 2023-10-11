@@ -60,7 +60,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authRequestFilter()).addPathPatterns("/api/**");
+        registry.addInterceptor(authRequestFilter()).addPathPatterns("/api/auth/**");
     }
 
     @Override

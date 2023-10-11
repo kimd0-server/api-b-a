@@ -33,8 +33,6 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
                 .mvcMatchers("/health/check")
-                .antMatchers("/index/**")
-                .antMatchers("/js/**")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
@@ -53,7 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .mvcMatchers("/api/auth/login", "/api/auth/refresh").permitAll()
                 .antMatchers("/api/auth/join/**", "/exception/**").permitAll()
-                .antMatchers("/oauth2/authorize/**").permitAll()
+                .antMatchers("/api/**/ctf/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
