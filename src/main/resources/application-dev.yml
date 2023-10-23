@@ -1,5 +1,5 @@
 server:
-  port: 8810
+  port: 9810
 
 rootPath: /home/kimd0/
 rootImagePath: /home/kimd0/image

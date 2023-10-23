@@ -1,8 +1,10 @@
 package com.example.api.common.config.jwt.provider;
 
+import com.example.api.common.base.vo.Code;
 import com.example.api.common.config.jwt.biz.CustomUserDetailService;
 import com.example.api.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.api.common.config.jwt.enums.JwtHeaderUtilEnums;
+import com.example.api.common.exception.GeneralException;
 import com.example.api.common.rep.auth.redis.logout.LogoutAccessTokenRedis;
 import com.example.api.common.rep.auth.redis.logout.LogoutAccessTokenRedisRepository;
 import com.example.api.common.rep.auth.redis.refresh.RefreshTokenRedis;
@@ -106,7 +108,7 @@ public class JwtTokenProvider {
 
     public String getUserEmail() {
         Authentication authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
-                .orElseThrow(() -> new NoSuchElementException("회원이 없습니다."));
+                .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "회원이 없습니다."));
         try {
             UserDetails principal = (UserDetails) authentication.getPrincipal();
             return principal.getUsername();

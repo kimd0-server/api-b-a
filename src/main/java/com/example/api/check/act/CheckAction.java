@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/check")
+@RequestMapping("/api/health/check")
 public class CheckAction {
     @GetMapping("")
-    public void check(UserEntity userEntity) {
-        log.error("user {}", userEntity);
+    public String check() {
+        return "ok";
     }
 }
