@@ -79,7 +79,7 @@ public class PubConfig {
         routingDataSource.afterPropertiesSet();
 
         HashMap<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "validate");
+        properties.put("hibernate.hbm2ddl.auto", "create");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.put("hibernate.default_batch_fetch_size", 1000);
         properties.put("hibernate.show_sql", true);
