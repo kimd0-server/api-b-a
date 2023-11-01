@@ -51,7 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .mvcMatchers("/api/auth/login", "/api/auth/refresh").permitAll()
                 .antMatchers("/api/auth/join/**", "/exception/**").permitAll()
-                .antMatchers("/api/**/ctf/**").permitAll()
+                .antMatchers("/api/**/**/ctf/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
