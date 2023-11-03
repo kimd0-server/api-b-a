@@ -1,5 +1,6 @@
 server:
   tomcat:
+    use-relative-redirects: true
     uri-encoding: UTF-8
   servlet:
     session:
