@@ -48,7 +48,11 @@ public class MvcConfig implements WebMvcConfigurer {
                         "http://limepiece.com",
                         "https://limepiece.com",
                         "http://www.limepiece.com",
-                        "https://www.limepiece.com"
+                        "https://www.limepiece.com",
+                        "http://limepiece.com:11217",
+                        "https://limepiece.com:11217",
+                        "http://www.limepiece.com:11217",
+                        "https://www.limepiece.com:11217"
                 )
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("authorization", "X-Auth-Token", "X-Requested-With", "Content-Type", "Original")
