@@ -37,7 +37,7 @@ public enum Code {
     TOKEN_MALFORMED(40002, HttpStatus.UNAUTHORIZED, "MalformedException"),
     TOKEN_EXPIRED(40003, HttpStatus.UNAUTHORIZED, "ExpiredException"),
     TOKEN_UNSUPPORTED(40004, HttpStatus.UNAUTHORIZED, "UnsupportedException"),
-    TOKEN_ILLEGAL_ARGUMENT(40005, HttpStatus.UNAUTHORIZED, "IllegalArgumentException");
+    TOKEN_ILLEGAL_ARGUMENT(40005, HttpStatus.FORBIDDEN, "IllegalArgumentException");
 
 
     private final Integer code;

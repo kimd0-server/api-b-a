@@ -10,12 +10,13 @@ import com.example.api.common.rep.auth.redis.refresh.RefreshTokenRedis;
 import com.example.api.common.utils.CookieUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class RefreshService {
     private final JwtTokenProvider jwtTokenProvider;
-
+    @Transactional(readOnly = true)
     public TokenDTO refresh(String refreshToken) {
         refreshToken = jwtTokenProvider.resolveToken(refreshToken);
         String userEmail = jwtTokenProvider.getUserEmail(refreshToken);
