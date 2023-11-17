@@ -1,5 +1,5 @@
 server:
-  port: 21107
+  port: 20107
 
 rootPath: C:\\
 rootImagePath: C:\\image

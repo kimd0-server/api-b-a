@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = {"/health"})
+@RequestMapping(value = {"/api"})
 public class HealthController {
 
-    @GetMapping("/check")
+    @GetMapping("/health")
     public String health() {
         return "OK";
     }

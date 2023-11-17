@@ -1,5 +1,5 @@
 server:
-  port: 11107
+  port: 10107
 
 rootPath: /home/kimd0/
 rootImagePath: /home/kimd0/image

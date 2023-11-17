@@ -32,7 +32,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-                .mvcMatchers("/api/health/check")
+                .mvcMatchers("/api/health")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
