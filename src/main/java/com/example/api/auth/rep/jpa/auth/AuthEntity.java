@@ -1,6 +1,6 @@
-package com.example.api.common.rep.auth.jpa.auth;
+package com.example.api.auth.rep.jpa.auth;
 
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
+import com.example.api.auth.rep.jpa.user.UserEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 

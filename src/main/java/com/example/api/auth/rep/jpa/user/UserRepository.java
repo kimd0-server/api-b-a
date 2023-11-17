@@ -1,4 +1,4 @@
-package com.example.api.common.rep.auth.jpa.user;
+package com.example.api.auth.rep.jpa.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -2,13 +2,13 @@ package com.example.api.auth.api.biz;
 
 import com.example.api.auth.api.dto.LoginParamDTO;
 import com.example.api.auth.api.dto.TokenDTO;
+import com.example.api.auth.rep.redis.refresh.RefreshTokenRedis;
 import com.example.api.common.base.vo.Code;
 import com.example.api.common.config.jwt.enums.JwtHeaderUtilEnums;
 import com.example.api.common.config.jwt.provider.JwtTokenProvider;
 import com.example.api.common.exception.GeneralException;
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
-import com.example.api.common.rep.auth.jpa.user.UserRepository;
-import com.example.api.common.rep.auth.redis.refresh.RefreshTokenRedis;
+import com.example.api.auth.rep.jpa.user.UserEntity;
+import com.example.api.auth.rep.jpa.user.UserRepository;
 import com.example.api.common.utils.CookieUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

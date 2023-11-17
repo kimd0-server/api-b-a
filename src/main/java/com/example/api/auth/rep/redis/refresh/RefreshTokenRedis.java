@@ -1,4 +1,4 @@
-package com.example.api.common.rep.auth.redis.refresh;
+package com.example.api.auth.rep.redis.refresh;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,9 +1,9 @@
-package com.example.api.common.rep.auth.jpa.user;
+package com.example.api.auth.rep.jpa.user;
 
 import com.example.api.auth.api.dto.JoinParamDTO;
-import com.example.api.common.rep.auth.jpa.auth.AuthEntity;
-import com.example.api.common.rep.auth.jpa.wallet.WalletEntity;
-import com.example.api.common.rep.common.CommonDateEntity;
+import com.example.api.auth.rep.jpa.wallet.WalletEntity;
+import com.example.api.auth.rep.jpa.auth.AuthEntity;
+import com.example.api.auth.rep.common.CommonDateEntity;
 import com.example.api.common.utils.HttpUtils;
 import com.example.api.common.utils.RequestUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;

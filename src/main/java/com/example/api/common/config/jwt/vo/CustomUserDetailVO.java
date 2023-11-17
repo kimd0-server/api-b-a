@@ -1,6 +1,6 @@
 package com.example.api.common.config.jwt.vo;
 
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
+import com.example.api.auth.rep.jpa.user.UserEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

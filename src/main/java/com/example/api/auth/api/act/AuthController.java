@@ -1,11 +1,11 @@
 package com.example.api.auth.api.act;
 
 import com.example.api.auth.api.biz.AuthService;
+import com.example.api.auth.rep.jpa.user.UserEntity;
 import com.example.api.common.base.dto.DataResponseDTO;
 import com.example.api.common.base.dto.ResponseDTO;
 import com.example.api.common.base.vo.Code;
-import com.example.api.common.rep.auth.jpa.user.UserDTO;
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
+import com.example.api.auth.rep.jpa.user.UserDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

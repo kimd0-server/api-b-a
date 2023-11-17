@@ -1,4 +1,4 @@
-package com.example.api.common.database;
+package com.example.api.auth.database;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.transaction.support.TransactionSynchronizationManager;

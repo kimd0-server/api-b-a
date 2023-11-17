@@ -1,4 +1,4 @@
-package com.example.api.common.database;
+package com.example.api.auth.database;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,7 +22,7 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.example.api.common.rep.auth.jpa",
+        basePackages = "com.example.api.auth.rep.jpa",
         entityManagerFactoryRef = "pubEntityManagerFactory",
         transactionManagerRef = "pubTransactionManager"
 )
@@ -87,7 +87,7 @@ public class PubConfig {
         properties.put("hibernate.use_sql_comments", true);
 
         return builder.dataSource(new LazyConnectionDataSourceProxy(routingDataSource))
-                .packages("com.example.api.common.rep.auth.jpa")
+                .packages("com.example.api.auth.rep.jpa")
                 .properties(properties)
                 .persistenceUnit("pubEntityManager")
                 .build();

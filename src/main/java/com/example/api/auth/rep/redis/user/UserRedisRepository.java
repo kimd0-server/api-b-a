@@ -1,4 +1,4 @@
-package com.example.api.common.rep.auth.redis.user;
+package com.example.api.auth.rep.redis.user;
 
 import org.springframework.data.keyvalue.repository.KeyValueRepository;
 

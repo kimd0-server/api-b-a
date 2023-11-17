@@ -1,7 +1,7 @@
 package com.example.api.auth.api.biz;
 
 import com.example.api.common.config.jwt.provider.JwtTokenProvider;
-import com.example.api.common.rep.auth.jpa.user.UserRepository;
+import com.example.api.auth.rep.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

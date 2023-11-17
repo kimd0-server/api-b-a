@@ -1,4 +1,4 @@
-package com.example.api.common.rep.auth.redis.logout;
+package com.example.api.auth.rep.redis.logout;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

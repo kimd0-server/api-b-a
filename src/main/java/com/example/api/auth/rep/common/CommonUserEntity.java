@@ -1,4 +1,4 @@
-package com.example.api.common.rep.common;
+package com.example.api.auth.rep.common;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

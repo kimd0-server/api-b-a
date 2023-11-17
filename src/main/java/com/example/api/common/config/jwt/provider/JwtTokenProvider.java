@@ -5,10 +5,10 @@ import com.example.api.common.config.jwt.biz.CustomUserDetailService;
 import com.example.api.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.api.common.config.jwt.enums.JwtHeaderUtilEnums;
 import com.example.api.common.exception.GeneralException;
-import com.example.api.common.rep.auth.redis.logout.LogoutAccessTokenRedis;
-import com.example.api.common.rep.auth.redis.logout.LogoutAccessTokenRedisRepository;
-import com.example.api.common.rep.auth.redis.refresh.RefreshTokenRedis;
-import com.example.api.common.rep.auth.redis.refresh.RefreshTokenRedisRepository;
+import com.example.api.auth.rep.redis.logout.LogoutAccessTokenRedis;
+import com.example.api.auth.rep.redis.logout.LogoutAccessTokenRedisRepository;
+import com.example.api.auth.rep.redis.refresh.RefreshTokenRedis;
+import com.example.api.auth.rep.redis.refresh.RefreshTokenRedisRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Slf4j

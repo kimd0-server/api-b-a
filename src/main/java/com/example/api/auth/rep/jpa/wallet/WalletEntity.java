@@ -1,8 +1,8 @@
-package com.example.api.common.rep.auth.jpa.wallet;
+package com.example.api.auth.rep.jpa.wallet;
 
 
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
-import com.example.api.common.rep.common.CommonDateEntity;
+import com.example.api.auth.rep.jpa.user.UserEntity;
+import com.example.api.auth.rep.common.CommonDateEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

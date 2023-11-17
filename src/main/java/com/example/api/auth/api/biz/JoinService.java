@@ -1,11 +1,10 @@
 package com.example.api.auth.api.biz;
 
 import com.example.api.auth.api.dto.JoinParamDTO;
-import com.example.api.common.rep.auth.jpa.user.UserEntity;
-import com.example.api.common.rep.auth.jpa.user.UserRepository;
+import com.example.api.auth.rep.jpa.user.UserEntity;
+import com.example.api.auth.rep.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
